@@ -1,0 +1,32 @@
+{
+  "name": "Redstone-Arsenal",
+  "author": {
+    "name": "Trezy",
+    "email": "tre@trezy.com",
+    "url": "http://trezy.com"
+  },
+  "license": "GPL-3.0",
+  "version": "0.1.0",
+  "homepage": "https://github.com/trezy/Redstone-Arsenal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trezy/Redstone-Arsenal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trezy/Redstone-Arsenal/issues"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "grunt": "^0.4.4",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-handlebars": "^0.7.0",
+    "grunt-contrib-imagemin": "^0.6.1",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
