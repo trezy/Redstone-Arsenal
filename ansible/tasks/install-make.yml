@@ -1,0 +1,5 @@
+- name: Install Make
+  apt: pkg={{ item }}
+  with_items:
+  - automake
+  - make

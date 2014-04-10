@@ -1,0 +1,13 @@
+- name: Install MongoDB
+  apt: pkg={{ item }}
+  with_items:
+  - mongodb
+
+- name: MongoDB | Create logging directory
+  file: path=/var/log/mongodb state=directory
+
+#- name: MongoDB | Install PHP's MongoDB driver
+#  command: pecl install mongo
+
+- name: MongoDB | Tell PHP to load the MongoDB driver
+  copy: src=ansible/files/etc_php5_conf.d_mongo.ini dest=/etc/php5/conf.d/mongo.ini

@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.memory = 2048
   end
 
-  config.vm.synced_folder = 'build', '/var/www'
+  config.vm.synced_folder 'build', '/var/www'
 
   config.vm.network :forwarded_port, guest: 80, host:8080
   config.vm.network :forwarded_port, guest: 443, host:8443
@@ -16,7 +16,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :ansible do |a|
     a.playbook = 'playbook.yml'
     a.host_key_checking = false
-    a.extra_vars = {}
+    a.extra_vars = {
+      minecraft_user: "vagrant",
+      install_voice_server: false
+    }
     a.verbose = false
   end
 end

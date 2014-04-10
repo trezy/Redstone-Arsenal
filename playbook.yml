@@ -1,0 +1,51 @@
+---
+- hosts: all
+  remote_user: "{{ minecraft_user }}"
+  sudo: yes
+  vars:
+    minecraft_user: "minecraft"
+    home_directory: "/home/minecraft"
+    install_voice_server: true
+
+  tasks:
+  - name: Create the Minecraft directory
+    file: dest={{home_directory}}/minecraft mode=0777 state=directory
+
+  # Update the apt cache and upgrade all upgradeable packages
+  - include: ansible/tasks/update.yml
+
+  # Install dependencies
+  - include: ansible/tasks/install-apache.yml
+  - include: ansible/tasks/install-curl.yml
+  - include: ansible/tasks/install-git.yml
+  - include: ansible/tasks/install-java7.yml
+  - include: ansible/tasks/install-make.yml
+  - include: ansible/tasks/install-php.yml
+  - include: ansible/tasks/install-mongodb.yml
+  - include: ansible/tasks/install-screen.yml
+  - include: ansible/tasks/install-zip.yml
+
+  # Configure Apache
+  - include: ansible/tasks/configure-apache.yml
+
+  # Configure Website
+  - include: ansible/tasks/configure-website.yml
+    notify:
+     - restart apache
+     - start mongod
+
+  # Configure Minecraft server
+  - include: ansible/tasks/configure-server.yml
+
+  # Install voice chat server
+  #- include: ansible/tasks/install-mumble.yml
+  #- include: ansible/tasks/install-teamspeak.yml
+  #- include: ansible/tasks/install-ventrilo.yml
+  #  when: install_voice_server == true
+  # http://lolindrath.com/blog/2013/07/03/running-a-teamspeak-3-server-on-digital-ocean/
+
+  handlers:
+    # restart apache
+    - include: ansible/handlers/apache.yml
+    # start|stop mongod
+    - include: ansible/handlers/mongodb.yml
