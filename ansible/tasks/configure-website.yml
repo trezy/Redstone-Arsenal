@@ -1,0 +1,11 @@
+- name: Create the Minecraft web directory
+  file: dest=/minecraft/www owner="{{ minecraft_user}}" group="{{ minecraft_user}}" mode=0777 state=directory
+
+- name: Create sites-available entry
+  copy: src=ansible/files/etc_apache2_sites-available_mc.trezy.com dest=/etc/apache2/sites-available/mc.trezy.com
+
+- name: Disable default site
+  command: a2dissite default
+
+- name: Enable site
+  command: a2ensite mc.trezy.com

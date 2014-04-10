@@ -1,0 +1,17 @@
+- name: Apache | Enable modules
+  command: a2enmod ssl rewrite vhost_alias
+  
+- name: Apache | Create SSL directory
+  file: dest=/etc/apache2/ssl state=directory
+  
+- name: Apache | Upload SSL certificate
+  copy: src=ansible/files/etc_apache2_ssl_apache.crt dest=/etc/apache2/ssl/apache.crt
+  
+- name: Apache | Upload SSL key
+  copy: src=ansible/files/etc_apache2_ssl_apache.key dest=/etc/apache2/ssl/apache.key
+  
+- name: Apache | Create virtual.conf
+  copy: src=ansible/files/etc_apache2_conf.d_virtual.conf dest=/etc/apache2/conf.d/virtual.conf
+  
+- name: Apache | Modify dir.conf
+  copy: src=ansible/files/etc_apache2_mods-enabled_dir.conf dest=/etc/apache2/mods-enabled/dir.conf

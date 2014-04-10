@@ -1,0 +1,8 @@
+- name: Add Minecraft user
+  user: name=minecraft shell=/bin/bash
+
+- name: Add Minecraft user to sudoers file
+  copy: src=ansible/files/etc_sudoers dest=/etc/sudoers validate='visudo -cf %s'
+
+- name: Authorize local machine for SSH
+  authorized_key: user=minecraft key="{{ lookup('file', 'files/id_rsa.pub') }}"

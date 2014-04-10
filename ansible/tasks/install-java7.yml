@@ -1,0 +1,4 @@
+- name: Install Java
+  apt: pkg={{ item }}
+  with_items:
+  - openjdk-7-jdk

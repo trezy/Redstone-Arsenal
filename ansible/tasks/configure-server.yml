@@ -1,0 +1,2 @@
+- name: Create the Minecraft server directory
+  file: dest=/minecraft/server owner="{{ minecraft_user }}" group="{{ minecraft_user }}" mode=0777 state=directory

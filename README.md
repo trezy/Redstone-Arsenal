@@ -24,14 +24,9 @@ These are optional but if you want to run the pre-configured server you'll need 
 * [Vagrant](http://vagrantup.com)
 * [Ansible](http://ansibleworks.com)
 
-We use Grunt to manage all of our build tasks and Bower to manage our Javascript libraries. Grunt will be installed as one of the dev dependencies but Bower and the Grunt CLI should be installed globally. Make sure you have the prequisites installed, clone the repository, and install the dev dependencies:
+To build the project for the first time, run the `build.sh` script in the root of the project. The build script uses Vagrant and Ansible to provision a virtual machine for testing so make sure you have both of those installed first. If you're not planning to use the virtual machine you can run the build script with the `--novm` option. This will make sure you have Grunt and Bower installed globally, install the main dev dependencies with Node/npm, install the Javascript dependencies with Bower, run the Grunt build process to build the initial files, and set up your Vagrant virtual machine.
 
-    git clone https://github.com/trezy/Redstone-Arsenal.git
-    cd Redstone-Arsenal
-    npm install
-    bower install
-
-We're using Vagrant and Ansible to provision a virtual machine for testing. Make sure you have both of those installed, then go to the project directory and run `vagrant up`. You'll now be able to check out your build at http://localhost:8080. Since the Vagrant box is pointing at your local `/build` folder, it'll show your changes everytime you refresh.
+Once the build script finishes - it could take some time - you're project is almost ready. Go to the project directory and run `vagrant up` to start the virtual machine. You'll now be able to check out your build at http://localhost:8080. Since the Vagrant box is pointing at your local `/build` folder, it'll show your changes everytime you refresh.
 
 To make sure you don't have to touch configuration again you can run the watch script to update the project everytime you change a file:
 

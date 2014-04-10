@@ -1,0 +1,4 @@
+- name: Install CURL
+  apt: pkg={{ item }}
+  with_items:
+  - curl

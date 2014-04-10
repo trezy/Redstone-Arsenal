@@ -1,0 +1,5 @@
+- name: Install Zip
+  apt: pkg={{ item }}
+  with_items:
+  - zip
+  - unzip

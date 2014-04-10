@@ -1,0 +1,5 @@
+- name: start mongod
+  command: mongod --fork --logpath /var/log/mongodb/mongo.log
+
+- name: stop mongod
+  command: mongod --shutdown
