@@ -20,7 +20,7 @@ module.exports = (grunt) ->
           # Turning on sourcemaps enables easy linking back to the original Coffeescript file
           sourceMap: true
         files:
-          'build/js/app.js': 'coffee/**/*.coffee'
+          'build/js/app.js': 'coffee/**/*.litcoffee'
 
     concat:
       libs:

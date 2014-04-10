@@ -19,7 +19,7 @@ There are a few prerequisites to build the project:
 * [Grunt](http://gruntjs.com/)
 * [Bower](http://bower.io/)
 
-These are optional but if you want to run the pre-configured server you'll ned to install:
+These are optional but if you want to run the pre-configured server you'll need to install:
 
 * [Vagrant](http://vagrantup.com)
 * [Ansible](http://ansibleworks.com)
